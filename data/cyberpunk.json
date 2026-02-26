@@ -1,0 +1,97 @@
+{
+    "id": "cyberpunk",
+    "name": "Cyberpunk Neon",
+    "initialStats": {
+        "gold": 1000,
+        "stamina": 20,
+        "karma": 0
+    },
+    "scenarios": {
+        "start": {
+            "description": "The rain slicks the neon-lit streets of District 9. Your cyberdeck hums with a stolen encryption key.",
+            "options": [
+                {
+                    "text": "Hack the corporate relay (Risky, +500 Credits)",
+                    "next": "alleyway",
+                    "effects": {
+                        "gold": 500,
+                        "stamina": -5
+                    }
+                },
+                {
+                    "text": "Bribe the street doc for a stim-shot (Costs 200 Credits)",
+                    "next": "alleyway",
+                    "effects": {
+                        "gold": -200,
+                        "stamina": 10
+                    }
+                },
+                {
+                    "text": "Lay low in the shadows (+1 Karma)",
+                    "next": "alleyway",
+                    "effects": {
+                        "karma": 1
+                    }
+                }
+            ]
+        },
+        "alleyway": {
+            "description": "A group of scavengers blocks the narrow passage. Their metal limbs gleam in the blue neon.",
+            "options": [
+                {
+                    "text": "Engage combat mode (Costs 5 Stamina)",
+                    "next": "citadel_gate",
+                    "effects": {
+                        "stamina": -5,
+                        "karma": -2
+                    }
+                },
+                {
+                    "text": "Use an EMP grenade (Costs 400 Credits)",
+                    "next": "citadel_gate",
+                    "effects": {
+                        "gold": -400
+                    }
+                },
+                {
+                    "text": "Negotiate passage (Requires Karma > 0)",
+                    "next": "citadel_gate",
+                    "effects": {
+                        "karma": 1
+                    },
+                    "requirement": {
+                        "stat": "karma",
+                        "min": 1
+                    }
+                }
+            ]
+        },
+        "citadel_gate": {
+            "description": "You stand before the Arasaka Citadel. One choice left: upload the virus or delete the evidence?",
+            "options": [
+                {
+                    "text": "Upload the virus (Chaos path)",
+                    "next": "ending_chaos",
+                    "effects": {
+                        "karma": -10
+                    }
+                },
+                {
+                    "text": "Delete the evidence (Redemption path)",
+                    "next": "ending_order",
+                    "effects": {
+                        "karma": 10
+                    }
+                }
+            ]
+        },
+        "ending_chaos": {
+            "description": "The city screams as the grid collapses. You walk away into the darkness, a ghost in the machine.",
+            "options": []
+        },
+        "ending_order": {
+            "description": "The secrets are gone. You've earned a quiet life, or at least as quiet as it gets in this city.",
+            "options": []
+        }
+    }
+}
